@@ -1,10 +1,10 @@
 import requests
-
+import json
 register_link = 'https://cit-home1.herokuapp.com/api/register'
 check_link = 'https://cit-home1.herokuapp.com/api/check_me'
-json_args = {'first name': 'Vladimir', 'last name': 'Gasta', 'Hello': 'World'}
+json_args = json.dumps({'first name': 'Vladimir', 'last name': 'Gasta'})
 head = {'content-type': 'application/json'}
-r = requests.get(register_link, json=json_args,headers=head)
-print(r.json())
+r = requests.post(register_link, data=json_args,headers=head)
+print(r)
 check=requests.get(check_link)
 print(check.json())
